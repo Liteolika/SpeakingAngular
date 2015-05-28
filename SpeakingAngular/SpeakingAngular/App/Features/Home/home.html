@@ -1,0 +1,20 @@
+﻿<div ng-controller="HomeController as home">
+    <h3>This is the home.html</h3>
+    <div>
+
+        <form name="messageForm">
+
+            <div class="form-group">
+
+                <label class="control-label" for="message">Your message</label>
+                <input class="form-control" type="text" ng-model="home.message" placeholder="Your message" />
+                
+            </div>
+            <div class="form-group">
+                <input class="form-control btn btn-primary" type="button" ng-click="home.postMessage()" value="Post message" />
+            </div>
+
+        </form>
+
+    </div>
+</div>

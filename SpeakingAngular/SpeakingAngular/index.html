@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="mainApp">
+<head>
+    <title>Speaking Angular</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/site.css" rel="stylesheet" />
+</head>
+<body ng-controller="ShellController as shell">
+
+    <div ng-include="'/app/shell/navbar.html'"></div>
+
+    <div class="container-fluid">
+
+
+        <div class="row">
+
+            <div class="col-xs-8 col-sm-8 col-md-9">
+
+                <h3>This site is to test the communication between angular components.</h3>
+
+                <div ng-include="'/app/features/home/home.html'"></div>
+
+            </div>
+
+            <div ng-show="shell.messages.length > 0" class="col-xs-4 col-sm-4 col-md-3 messages-area">
+                <h4>Messages</h4>
+                <div class="message" ng-repeat="message in shell.messages">
+                    <div class="message-title">
+                        {{ message.timestamp | date: 'yyyy-MM-dd HH:mm:ss' }}
+                    </div>
+                    <div class="message-body">
+                        {{ message.message }}
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--Libraries-->
+    <script src="Scripts/angular.min.js"></script>
+
+    <!--Applications-->
+    <script src="App/MainApp.js"></script>
+
+    <!--Controllers-->
+    <script src="App/Shell/ShellController.js"></script>
+    <script src="App/Features/Home/HomeController.js"></script>
+
+    <!--Services-->
+    <script src="App/Services/MessageService.js"></script>
+    <script src="App/Services/MessageDataService.js"></script>
+
+</body>
+</html>

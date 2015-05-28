@@ -1,0 +1,42 @@
+﻿body, html {
+    height: 100%;
+}
+
+.messages-area {
+    background-color: dodgerblue;
+    height: 100%;
+    /*position: absolute;*/
+    /*top: 52px;
+    bottom: 0;
+    right: 0;*/
+
+    position: absolute;
+    top: 52px;
+    right: 0;
+
+}
+
+.messages-area h4 {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+}
+
+.messages-area .message {
+    color: white;
+    background-color: gainsboro;
+    border: solid 1px #3d3d3d;
+    margin-bottom: 10px;
+}
+
+.messages-area .message .message-title {
+    color: black;
+    background-color: ActiveBorder;
+    padding: 5px 3px 5px 3px;
+    font-weight: bold;
+}
+
+.messages-area .message .message-body {
+    margin: 5px 5px;
+    color: black;
+}
