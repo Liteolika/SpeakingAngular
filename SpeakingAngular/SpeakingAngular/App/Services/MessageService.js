@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    var MessageService = function ($timeout, $q, MessageDataService) {
+    var MessageService = function ($timeout, $q, MessageDataService, $http) {
 
         var nextId = 0;
 
@@ -16,7 +16,7 @@
                 removeMessage(message.id);
             }, 10000);
 
-            MessageDataService.AddMessage(messageString);
+            //MessageDataService.AddMessage(messageString);
             
         }
 
@@ -44,6 +44,39 @@
 
         addMessage("Message service has started");
 
+        var addRandom = function () {
+            var randomTime = Math.floor((Math.random() * 20000) + 1000);
+            addMessage("Next message in " + randomTime / 1000 + " secs.");
+            $timeout(addRandom, randomTime);
+        }
+
+        addRandom();
+
+        var addApiMessages = function () {
+
+            $http({
+                url: "/api/messages",
+                method: 'GET'
+                }
+                ).then(function (response) {
+                var messages = response.data;
+                for (var i = 0; i < messages.length; i++) {
+                    addMessage(messages[i].message);
+                }
+            }, function (error) {
+                addMessage("ERROR: " + error.data.message);
+            }).catch(function (exception) {
+                var a = 1;
+            });
+
+            var randomTime = Math.floor((Math.random() * 20000) + 1000);
+            $timeout(addApiMessages, randomTime);
+
+        }
+
+        addApiMessages();
+
+
         return {
             GetMessages: getMessages,
             AddMessage: addMessage
@@ -61,7 +94,7 @@
     }
 
 
-    MessageService.$inject = ['$timeout', '$q', 'MessageDataService'];
+    MessageService.$inject = ['$timeout', '$q', 'MessageDataService', '$http'];
 
     var mainApp = angular.module("mainApp");
     mainApp.factory("MessageService", MessageService);

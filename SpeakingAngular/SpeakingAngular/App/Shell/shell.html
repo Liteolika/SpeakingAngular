@@ -1,0 +1,36 @@
+﻿
+<div ng-include="'/app/shell/navbar.html'"></div>
+
+<div ng-controller="TestController as test">
+
+</div>
+
+<div class="container-fluid" ng-controller="ShellController as shell">
+
+
+    <div class="row">
+
+        <div class="col-xs-8 col-sm-8 col-md-9">
+
+            <h3>This site is to test the communication between angular components.</h3>
+
+            <div ng-include="'/app/features/home/home.html'"></div>
+
+        </div>
+
+        <div ng-show="shell.messages.length > 0" class="col-xs-4 col-sm-4 col-md-3 messages-area">
+            <h4>Messages</h4>
+            <div class="message" ng-repeat="message in shell.messages">
+                <div class="message-title">
+                    {{ message.timestamp | date: 'yyyy-MM-dd HH:mm:ss' }}
+                </div>
+                <div class="message-body">
+                    {{ message.message }}
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

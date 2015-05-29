@@ -12,6 +12,7 @@ namespace SpeakingAngular.Server.Api
     {
 
         private List<WebMessage> messages;
+        private Random rnd;
 
         public MessagesController()
         {
@@ -26,12 +27,21 @@ namespace SpeakingAngular.Server.Api
                 new WebMessage("Message 5")
             };
 
+            rnd = new Random();
+
         }
 
         [Route("")]
         [HttpGet]
         public IHttpActionResult Get()
         {
+            messages.Clear();
+
+            for (int i = 0; i < rnd.Next(1,3); i++)
+            {
+                messages.Add(new WebMessage("This is an API message"));
+            }
+
             return Ok(messages.AsEnumerable());
         }
 

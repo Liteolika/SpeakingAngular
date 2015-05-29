@@ -87,8 +87,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\Services\MessageDataService.js" />
+    <Content Include="App\Shell\shell.html" />
+    <Content Include="App\TestController.js" />
+    <Content Include="Content\animate.css" />
+    <Content Include="Content\animate.min.css">
+      <DependentUpon>animate.css</DependentUpon>
+    </Content>
+    <Content Include="Scripts\angular-animate.js" />
+    <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="packages.config" />
+    <Content Include="Scripts\angular-animate.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
